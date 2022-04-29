@@ -1,5 +1,5 @@
 const express=require("express");
-
+const cors=require("cors");
 const app=express();
 
 const mongoose=require("mongoose");
@@ -16,7 +16,7 @@ mongoose.connect(MONGO_DB_CONFIG.DB,{
     console.log("Datebase Can`t be Connected"+error);
 }
 );
-
+app.use(cors());
 app.use(express.json());
 app.use('/uploads',express.static('uploads'));
 app.use('/api',require("./route/app.route"));
